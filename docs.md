@@ -5,3 +5,7 @@
 
 See [original diagram here](https://drive.google.com/file/d/0B8IqKJACNaFOeFB5d0RDLTllWVk/view?usp=sharing)
 
+## Initial ERD
+
+<img width="915" alt="maintt-erd" src="https://cloud.githubusercontent.com/assets/13568167/19418699/dbf55608-93d1-11e6-88b0-5c2bae2e9b0d.png">
+
