@@ -1,5 +1,7 @@
 language: python
 
+sudo: required
+
 python:
   - 2.7
   - 3.5
@@ -17,6 +19,11 @@ before_install:
 install:
   - cd maintt && pip install -r requirements.txt
 
+before_script:
+  - mysql -e 'CREATE DATABASE maintt;'
+  - cd maintt && mv .env.example .env
+  - ls
+
 script:
-  - python manage.py migrate
-  - python manage.py test tests
+  - cd maintt && python manage.py migrate
+  - cd maintt && python manage.py test tests
