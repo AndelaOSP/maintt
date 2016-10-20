@@ -1,5 +1,5 @@
 # maintt
-[![Code Climate](https://codeclimate.com/github/open-andela/maintt/badges/gpa.svg)](https://codeclimate.com/github/open-andela/maintt) [![Test Coverage](https://codeclimate.com/github/open-andela/maintt/badges/coverage.svg)](https://codeclimate.com/github/open-andela/maintt/coverage)
+[![Build Status](https://travis-ci.org/AndelaOSP/maintt.svg?branch=develop)](https://travis-ci.org/AndelaOSP/maintt) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/22b9d145fdba4af7a23ce2c4dac8e232)](https://www.codacy.com/app/AndelaOSP/maintt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andelaosp/maintt&amp;utm_campaign=Badge_Grade)
 
 A maintenance tracker system
 
