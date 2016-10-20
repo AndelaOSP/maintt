@@ -21,24 +21,24 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-    @receiver(pre_delete, sender=User)
-    def delete_user_profile(sender, instance, **kwargs):
-        '''
-        A pre-book for deleting a User, firsts deletes the 
-        associated UserProfile.
-        '''
-        if instance:
-            user_profile = UserProfile.objects.get(user=instance)
-            user_profile.delete()
-    
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance=None, created=False, **kwargs):
-        '''
-        A post-hook for creating a user, creates an associated 
-        UserProfile instance
-        '''
-        if created:
-            UserProfile.objects.create(user=instance)
+@receiver(pre_delete, sender=User)
+def delete_user_profile(sender, instance, **kwargs):
+    '''
+    A pre-book for deleting a User, firsts deletes the
+    associated UserProfile.
+    '''
+    if instance:
+        user_profile = UserProfile.objects.get(user=instance)
+        user_profile.delete()
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance=None, created=False, **kwargs):
+    '''
+    A post-hook for creating a user, creates an associated
+    UserProfile instance
+    '''
+    if created:
+        UserProfile.objects.create(user=instance)
 
 
 class Notification(models.Model):
