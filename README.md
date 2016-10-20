@@ -1,5 +1,5 @@
 # maintt
-[![Code Climate](https://codeclimate.com/github/open-andela/maintt/badges/gpa.svg)](https://codeclimate.com/github/open-andela/maintt) [![Test Coverage](https://codeclimate.com/github/open-andela/maintt/badges/coverage.svg)](https://codeclimate.com/github/open-andela/maintt/coverage)
+[![Build Status](https://travis-ci.org/AndelaOSP/maintt.svg?branch=develop)](https://travis-ci.org/AndelaOSP/maintt)
 
 A maintenance tracker system
 
