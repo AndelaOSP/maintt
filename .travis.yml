@@ -1,11 +1,11 @@
 language: python
 
 python:
-  - 2.6
   - 2.7
   - 3.5
 
-services: psql
+services:
+  - mysql
 
 env:
   - DJANGO=1.10.2
@@ -13,13 +13,10 @@ env:
 before_install:
   - export DJANGO_SETTINGS_MODULE=maintt.settings
   - export PYTHONPATH=$HOME/builds/andelaOSP/maintt/maintt
-  - export PIP_USE_MIRRORS=true
 
 install:
-  - pip install -r requirements.txt
-
-before_script:
-  - psql -c "CREATE DATABASE mydb;" -U postgres
+  - cd maintt && pip install -r requirements.txt
 
 script:
   - python manage.py migrate
+  - python manage.py test tests

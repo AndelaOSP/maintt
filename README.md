@@ -22,15 +22,16 @@ pip install -r <file-name>
 ## Development Setup
 >_Beginners Edition_
 
-1. Fork and Clone the Repo
+- Fork and Clone the Repo
 
-2. Create a VirtualEnv for the project, see instructions here.
+- Create a VirtualEnv for the project, see instructions here.
 
-3. `cd` into the `/maintt` package and run:
+- `cd` into the `/maintt` package and run:
 ```
 pip install -r requirements.txt
 ```
-4. Run migrations
+
+- Run migrations
 **Optional:** You will need to create migrations for the `api` application in case they are not there.
 
 ```
@@ -41,21 +42,21 @@ python manage.py makemigrations api
 python manage.py migrate
 ```
 
-5. Create a `superuser` for the purpose of testing
+- Create a `superuser` for the purpose of testing
 ```
 python manage.py createsuperuser
 ```
 >_**TIP:** use admin / admin for simplicity._
 
-6. Run the server:
+- Run the server:
 ```
 python manage.py runserver [port-number]
 ```
 
-7. Access DRF's _Browsable API_ at:
+- Access DRF's _Browsable API_ at:
 ```
 http://localhost:port/api/
 ```
-Login with the _superuser_ created in step 5 above.
+Login with the _superuser_ created in the previous step above.
 
 
