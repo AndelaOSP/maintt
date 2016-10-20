@@ -18,7 +18,7 @@ user1 = {
 
 class UserProfileTestCase(TestCase):
     '''
-    Test cases for the UserProfile model that has a 
+    Test cases for the UserProfile model that has a
     1-to-1 relation with the ~auth.models.User model
     '''
 
@@ -43,10 +43,10 @@ class UserProfileTestCase(TestCase):
         self.assertIsNotNone(user.id)
         # check if password has been hashed
         self.assertNotEqual(user.password, user1['password'])
-    
+
     def test_user_profile_created(self):
         '''
-        Tests if the hook is triggered for creating UserProfile 
+        Tests if the hook is triggered for creating UserProfile
         once a User is created
         '''
         user = User.objects.get(username=user1['username'])

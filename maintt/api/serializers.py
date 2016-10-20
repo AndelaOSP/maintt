@@ -17,7 +17,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = UserProfile
         fields = ('url', 'username', 'first_name', 'last_name', 'email', 'is_staff',
             'created_at', 'updated_at', 'password')
-    
+
     def create(self, validated_data):
         '''
         Given a dictionary of deserialized field values, either update 
