@@ -18,16 +18,18 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'username', 'first_name', 'last_name', 'email', 'is_staff',
             'created_at', 'updated_at', 'password')
 
+    @staticmethod
     def create(self, validated_data):
         '''
-        Given a dictionary of deserialized field values, either update 
+        Given a dictionary of deserialized field values, either update
         an existing model instance, or create a new model instance.
         '''
         user_data = validated_data.pop('user')
         user = User.objects.create_user(**user_data)
         # the hook at the models then creates the UserProfile
         return UserProfile.objects.get(user=user)
-    
+
+    @staticmethod
     def update(self, instance, validated_data):
         '''
         Update a serialized User object
