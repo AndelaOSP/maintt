@@ -16,7 +16,7 @@ pip install -r <file-name>
 **Main:**
 - [Django RESTFramework (DRF)](http://www.django-rest-framework.org/)
 - [Django](https://www.djangoproject.com/)
-- [python-dotenv](https://github.com/theskumar/python-dotenv) - loading configuration files the [12Factor](12factor.net) way.
+- [python-dotenv](https://github.com/theskumar/python-dotenv) - loading configuration files the [12Factor](https://12factor.net/config) way.
 - [mysqlclient](https://pypi.python.org/pypi/mysqlclient)
 
 **Dev Dependencies:**
