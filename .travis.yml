@@ -22,8 +22,8 @@ install:
 before_script:
   - mysql -e 'CREATE DATABASE maintt;'
   - cd maintt && mv .env.example .env
-  - ls
+  - cd ../
 
 script:
-  - cd maintt && python manage.py migrate
-  - cd maintt && python manage.py test tests
+  - python manage.py migrate
+  - python manage.py test tests
