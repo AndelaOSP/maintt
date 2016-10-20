@@ -13,50 +13,14 @@ They are all listed in `maintt/requirements.txt`. Install them via:
 ```
 pip install -r <file-name>
 ```
+**Main:**
+- [Django RESTFramework (DRF)](http://www.django-rest-framework.org/)
+- [Django](https://www.djangoproject.com/)
+- [python-dotenv](https://github.com/theskumar/python-dotenv) - loading configuration files the [12Factor](https://12factor.net/config) way.
+- [mysqlclient](https://pypi.python.org/pypi/mysqlclient)
 
-- [Django RESTFramework (DRF)]()
-- [Django]
-- [python-dotenv](https://github.com/theskumar/python-dotenv) - loading configuration files the [12Factor]() way.
-- [mysqlclient]()
+**Dev Dependencies:**
+- [fake-factory](https://pypi.python.org/pypi/fake-factory) - for faking fixtures for tests.
 
 ## Development Setup
->_Beginners Edition_
-
-- Fork and Clone the Repo
-
-- Create a VirtualEnv for the project, see instructions here.
-
-- `cd` into the `/maintt` package and run:
-```
-pip install -r requirements.txt
-```
-
-- Run migrations
-**Optional:** You will need to create migrations for the `api` application in case they are not there.
-
-```
-python manage.py makemigrations api
-```
-
-```
-python manage.py migrate
-```
-
-- Create a `superuser` for the purpose of testing
-```
-python manage.py createsuperuser
-```
->_**TIP:** use admin / admin for simplicity._
-
-- Run the server:
-```
-python manage.py runserver [port-number]
-```
-
-- Access DRF's _Browsable API_ at:
-```
-http://localhost:port/api/
-```
-Login with the _superuser_ created in the previous step above.
-
-
+- See the [wiki entry here](https://github.com/AndelaOSP/maintt/wiki/Dev-Setup) for details.
