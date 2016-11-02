@@ -93,3 +93,6 @@ ENV/
 .vscode
 .idea
 .atom
+
+# Sublime Text
+*.sublime-*
