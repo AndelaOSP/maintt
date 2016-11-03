@@ -4,6 +4,9 @@ from api import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
+router.register(r'register', views.CreateUserView)
+router.register(r'login', views.LoginView)
+router.register(r'logout', views.Logout)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
