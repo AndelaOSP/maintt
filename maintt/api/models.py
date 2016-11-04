@@ -11,11 +11,15 @@ class UserProfile(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='profile')
+    
     user_level = models.IntegerField(default=1)
     department = models.CharField(max_length=100)
     admin_level = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
 
     def __unicode__(self):
         return self.user.username
