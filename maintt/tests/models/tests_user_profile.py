@@ -1,6 +1,5 @@
 from django.test import TestCase, Client
 from faker import Faker
-from rest_framework.test import force_authenticate
 
 from django.contrib.auth.models import User
 from api.models import UserProfile
