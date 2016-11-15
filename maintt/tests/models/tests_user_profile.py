@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from faker import Faker
 
 from django.contrib.auth.models import User
@@ -15,6 +15,7 @@ user1 = {
     'password': fake.password(),
     'is_staff': 1
 }
+
 
 class UserProfileTestCase(TestCase):
     '''
@@ -55,3 +56,34 @@ class UserProfileTestCase(TestCase):
         self.assertIsNotNone(profile.created_at)
         self.assertIsNotNone(profile.updated_at)
 
+    def test_user_profile_updated(self):
+        '''
+        Tests if User Profile Updates when a user field is changed
+        '''
+        user = User.objects.get(username=user1['username'])
+        profile = UserProfile.objects.get(user=user)
+        self.assertEqual(user.last_name, user1['last_name'])
+        user.last_name = 'some_new_last_name'
+        user.save()
+        # check if user last_name has updated to new name
+        self.assertEqual(user.last_name, 'some_new_last_name')
+        self.assertEqual(profile.user.last_name, 'some_new_last_name')
+
+    def test_user_profile_deleted(self):
+        '''
+        Tests if User Profile gets deleted when User is deleted
+        '''
+        user = User.objects.filter(username=user1['username'])
+        profile = UserProfile.objects.filter(user=user)
+        user.delete()
+        self.assertFalse(user.exists())
+        self.assertFalse(profile.exists())
+
+    def test_get_users(self):
+        user2 = User.objects.create_user(fake.user_name(), fake.email(), fake.password())
+        user2.save()
+        client = Client()
+        client.login(username=user1['username'], password=user1['password'])
+        response = client.get('/api/users/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(response.json()['results']) == 2)
