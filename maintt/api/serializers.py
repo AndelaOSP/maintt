@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
-from api.models import UserProfile
-from rest_framework import serializers
+from api.models import UserProfile, Issue
+from rest_framework.response import Response
+from django.http import Http404
+from rest_framework import serializers, status
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     '''
@@ -15,8 +18,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ('url', 'username', 'first_name', 'last_name', 'email', 'is_staff',
-            'created_at', 'updated_at', 'password')
+        fields = (
+            'url', 'username', 'first_name', 'last_name', 'email', 'is_staff',
+            'created_at', 'updated_at', 'password'
+        )
 
     @staticmethod
     def create(self, validated_data):
@@ -43,3 +48,37 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             setattr(instance, attr, value)
         instance.save()
         return instance
+
+
+class IssueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Issue
+        fields = ('state', 'user', 'title', 'description', 'created_at')
+
+    @staticmethod
+    def create(validated_data):
+        issue = Issue.objects.create(**validated_data)
+        return issue
+
+    @staticmethod
+    def update(instance, validated_data):
+        try:
+            instance.state = validated_data.get('state', instance.state)
+            instance.user = validated_data.get('user', instance.user)
+            instance.title = validated_data.get('title', instance.title)
+            instance.description = validated_data.get('description', instance.description)
+            instance.created_at = validated_data.get('created_at', instance.created_at)
+            return instance
+        except instance.DoesNotExist:
+            raise Http404
+
+    def check_issue_exist(self, id):
+        try:
+            return Issue.objects.get(id=id)
+        except Issue.DoesNotExist:
+            raise Http404
+
+    def delete(self, instance, format=None):
+        issue = self.check_issue_exist(item_id=instance.id)
+        issue.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
