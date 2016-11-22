@@ -15,11 +15,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ('url', 'username', 'first_name', 'last_name', 'email', 'is_staff',
+        fields = (
+            'url', 'username', 'first_name', 'last_name', 'email', 'is_staff',
             'created_at', 'updated_at', 'password')
 
     @staticmethod
-    def create(self, validated_data):
+    def create(validated_data):
         '''
         Given a dictionary of deserialized field values, either update
         an existing model instance, or create a new model instance.
@@ -30,7 +31,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         return UserProfile.objects.get(user=user)
 
     @staticmethod
-    def update(self, instance, validated_data):
+    def update(instance, validated_data):
         '''
         Update a serialized User object
         '''
